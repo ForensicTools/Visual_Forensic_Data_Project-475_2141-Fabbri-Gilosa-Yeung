@@ -1,0 +1,5 @@
+UPDATE 1:
+This week our group decided to create the basic function of printing out all directories and files in those directories in a Perl
+program. We need to gather all relevant information first before we can start visualizing it, so we are starting out small by just
+finding the information first. Next week we will use this information in order to create a visual representation of a file system,
+then we will pull statistics from the information in order to find trends or relevant information about a certain user.
