@@ -1,0 +1,35 @@
+#!/usr/local/bin/perl -w
+#By Alessandro Fabbri
+
+#Has the program use the GD module which will be used to draw the graphs
+#In this case it is specifically calling bars which will make bar graphs
+use GD::Graph::bars;
+use strict;
+
+#Creates the data that will be used to make the chart, the data must be
+#Arranged into an array of arrays, for a bar the first array element is
+#The X value of the graph and the second is the Y
+my @data =  ([".doc", ".docx", ".log", ".msg", ".odt", ".txt", ".csv", ".dat", ".ppt", ".tar", ".xml",
+			  ".mp3", ".wav", ".wma", ".flv", ".mp4", ".bmp", ".gif", ".jpg", ".png", ".pdf", ".db",
+			  ".bat", ".cgi", ".com", ".exe", ".jar", ".html", ".tar.gz", ".zip", ".bin", ".iso", ".tmp"],
+			  [543,173,36,47,6,63,83,362,15,37,76,647,35,52,63,42,36,75,86,73,58,73,51,42,74,83,25,67,21
+			   ,41,87,7,184]);
+
+#Creates the a new graph object		   
+my $graph = GD::Graph::bars->new(1000,700);
+
+#Sets all of the options for the graph
+$graph->set(
+	x_label   => 'File Extension',
+	y_label   => 'Number of Hits',
+	title     => 'Number Files per File Type',
+) or die $graph->error;
+
+#Plots the graph
+my $image = $graph->plot(\@data) or die $graph->error;
+
+#Saves the graph into a .png file so it can be viewed
+open(IMG, '>graph.png') or die $!;
+binmode IMG;
+print IMG $image->gif;
+close IMG;
