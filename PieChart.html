@@ -1,0 +1,36 @@
+<html>
+  <head>
+<!--Using google's visual libraries in order to render the pie chart-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+<!-- setting the values for the information in the pie chart-->
+<!--This data will be replaced by the information gathered by the other program--> 
+        var data = google.visualization.arrayToDataTable([
+          ['File1', 'Hours per Day'],
+          ['File2',     4],
+          ['File3',      9],
+          ['File4',  3],
+          ['File5', 2],
+          ['File6',    6]
+        ]);
+
+        var options = {
+          title: 'Daily Usage'
+        };
+
+<!--creates and draws the pie chart-->
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+<!--This sets the location of the Pie chart on the window-->
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
