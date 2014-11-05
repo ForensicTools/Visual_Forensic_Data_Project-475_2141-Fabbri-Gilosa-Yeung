@@ -3,3 +3,9 @@ This week our group decided to create the basic function of printing out all dir
 program. We need to gather all relevant information first before we can start visualizing it, so we are starting out small by just
 finding the information first. Next week we will use this information in order to create a visual representation of a file system,
 then we will pull statistics from the information in order to find trends or relevant information about a certain user.
+
+UPDATE 2:
+This week our group focused on creating an web based script through HTML to visually represent the data taken from the file
+system. Data is taken into the array and processed by the pie chart libraries and drawn to the window using the SVG 
+Scalable Vector Graphics repository. Next week we will work on reading information gathered from a file and then sending it to
+the pie chart in order to display the usage time of specific programs.
