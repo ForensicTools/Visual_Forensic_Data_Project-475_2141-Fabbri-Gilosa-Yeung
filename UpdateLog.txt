@@ -9,3 +9,8 @@ This week our group focused on creating an web based script through HTML to visu
 system. Data is taken into the array and processed by the pie chart libraries and drawn to the window using the SVG 
 Scalable Vector Graphics repository. Next week we will work on reading information gathered from a file and then sending it to
 the pie chart in order to display the usage time of specific programs.
+
+UPDATE 3:
+For this pull request a script was created to access the access times so the amount of time a certain program was used can be
+calculated. The plan for next week is to implement this data found by the Time.pl script into the visual graphs that were 
+already created.
