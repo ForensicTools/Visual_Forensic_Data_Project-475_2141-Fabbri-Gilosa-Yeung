@@ -14,3 +14,9 @@ UPDATE 3:
 For this pull request a script was created to access the access times so the amount of time a certain program was used can be
 calculated. The plan for next week is to implement this data found by the Time.pl script into the visual graphs that were 
 already created.
+
+UPDATE 4:
+This week all of the tools were tested by creating visual representations of time spent using certain file system in the
+downloads directory. The images of the test were posted in the results file included with this pull request. The time
+file was edited and so was the graphing program. Next week our group will work on certain bugs we encountered while working
+on converting the data.

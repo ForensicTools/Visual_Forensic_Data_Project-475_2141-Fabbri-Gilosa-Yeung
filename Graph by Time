@@ -1,0 +1,80 @@
+#!/usr/local/bin/perl -w
+#By Alessandro Fabbri
+
+#Has the program use the GD module which will be used to draw the graphs
+#In this case it is specifically calling points which will make point graphs
+use GD::Graph::points;
+#Has the program use the Win32API::File:Time module which allows you to access files
+#Create, Modify, Access times. Also has the program use POSIX which is used to convert
+#epoch time into readable month/day/year hour:minute:second format
+use Win32API::File::Time qw{:win};
+use POSIX qw(strftime);
+#Has the program use the File::Basename module which helps in extracting the basic information
+#from a given file name including the base name by itself and the extension
+use File::Basename;
+use strict;
+
+#Creates all the variables to be used in the program with default values
+my $file = 'test.txt';
+my $count = 0;
+my $name = "";
+my $path = "";
+my $suffix ="";
+my $atime = '0';
+my $mtime = '0';
+my $ctime = '0';
+my $time1 = time();
+my $time2 = time();
+my $time3 = time();
+my @data;
+
+#Sets the directory that is going to be scanned
+my $directory = '/Downloads';
+
+#Opens the directory
+opendir (DIR, $directory) or die $!;
+
+#A loop that will run through the entire directory stopping at all files it finds
+while (my $file = readdir(DIR)) {
+	#Performs the GetFileTime subroutine which takes the name of the file and returns
+	#its access time, modify time, and creation time
+	($atime, $mtime, $ctime) = GetFileTime ($file);
+	
+	#Converts the time for the three values from epoch time into readable time
+	$time1 = strftime("%m/%d/%Y", localtime($atime));
+	$time2 = strftime("%m/%d/%Y", localtime($mtime));
+	$time3 = strftime("%m/%d/%Y", localtime($ctime));
+	
+	#Extracts the values for the files name, path, and suffix
+	($name,$path,$suffix) = fileparse($file,qr"\..[^.]*$");
+	
+	#Adds the values take from the file into an array of an arrays that will be
+	#used for generating the graph
+	$data[0][$count] = $suffix;
+	$data[1][$count] = $ctime;
+	
+	#Increments the loop count
+	$count += 1;
+	}
+#Closes the directory
+closedir (DIR);
+
+#Creates the a new graph object		   
+my $graph = GD::Graph::points->new(1000,700);
+
+#Sets all of the options for the graph
+$graph->set(
+	x_label   => 'File Extension',
+	y_label   => 'Date Accessed',
+	title     => 'Number Files per File Type',
+) or die $graph->error;
+
+#Plots the graph
+my $image = $graph->plot(\@data) or die $graph->error;
+
+#Saves the graph into a .png file so it can be viewed
+open(IMG, '>graph.png') or die $!;
+binmode IMG;
+print IMG $image->gif;
+close IMG;
+

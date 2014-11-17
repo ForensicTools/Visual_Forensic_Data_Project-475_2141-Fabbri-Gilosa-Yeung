@@ -23,6 +23,8 @@ my $directory = '/Downloads';
 #Opens the directory
 opendir (DIR, $directory) or die $!;
 
+#Opens the data file in order to write to it
+open (MYFILE, '>>data.txt');
 #A loop that will run through the entire directory stopping at all files it finds
 while (my $file = readdir(DIR)) {
 	#Performs the GetFileTime subroutine which takes the name of the file and returns
@@ -36,6 +38,13 @@ while (my $file = readdir(DIR)) {
 
 	#Prints out all the given values for the file, then loops
 	print "$file, $time1, $time2, $time3\n";
+
+	#prints data to data file
+	print MYFILE "$file, $time1, $time2, $time3\n";
 	}
 #Closes the directory
 closedir (DIR);
+
+#closes the file
+close (MYFILE);
+
