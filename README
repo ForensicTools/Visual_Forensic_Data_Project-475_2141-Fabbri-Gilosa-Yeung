@@ -4,3 +4,21 @@ information in a visual format. This is a general outline and is subject to chan
 
 Group Members:
 Alessandro Fabbri, Leo Yeung, Peter Gilosa (lyy4768, aaf7044, pxg6044)
+
+Functions of the Project
+The main purpose of this project was to visually display the amount of time spent using a certain file or group of files 
+in a directory. Another feature that was added to this project is visually representing how many of each type of file can
+be found in a certain directory. 
+
+How to Run the Project
+There should be an update to the GitHub repository containing two scripts. One of the scripts names Time.pl is used to find out 
+the access times for the files in a chosen directory. In order to change the directory in the script there is a value assigned 
+to a directory, simple change this value to the directory you want and then run the program. After the program runs a pie chart
+will appear is the same directory that the Time.pl script was ran. This graph displays the run times of all the files in the 
+selective directory.
+In order to access the feature that visually represents what type of files run the Number.pl script in the GitHub repository. 
+This program creates a graph that shows how many of each type of file that is found in a given directory. In order to change 
+the directory in the script there is a value assigned to a directory, simple change this value to the directory you want and 
+then run the program. After the program runs a bar graph will appear is the same directory that the Number.pl script was ran.
+All of these features and instructions are subject to change. The most recent update to this project can be found at
+https://github.com/pxg6044/Visual_Forensic_Data_Project-475_2141-Fabbri-Gilosa-Yeung .
